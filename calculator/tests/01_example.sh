@@ -29,3 +29,15 @@ if $CALCULATOR 3 @ 2; then  # If the return code of $PROGRAM is zero (i.e. succe
   echo 'ERROR! An invalid run of the application (3 @ 2) apparently succeeded?!'
   exit 1
 fi
+
+# Test 04: Ensure program errors with incorrect number of input argument
+if $CALCULATOR 3+ 2; then 
+  echo 'ERROR! An invalid run of the application (3+ 2) apparently succeeded?!'
+  exit 1
+fi
+
+# Test 05: Ensure program tolerates redundant operand??
+if ! $CALCULATOR 3 ++ 2; then
+  echo 'ERROR! The application (3 ++ 2) does not run as we expected?!'
+  exit 1
+fi
